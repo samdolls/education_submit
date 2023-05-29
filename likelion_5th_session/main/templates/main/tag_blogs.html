@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="blog_container">
+    <h1>#{{tag}} 게시물 목록</h1>
+    <hr>
+    {% for blog in blogs %}
+    <div class="blog">
+        <h2 class="title"><a href="{% url 'main:detail' blog.id %}">제목 : {{ blog.title }}</a></h2>
+        <h4>작성자 : {{ blog.writer }}</h4>
+        <p>내용 : {{ blog.body }}</p>
+    </div>
+    <hr>
+    {% endfor %}
+    
+    {% for comment in comments %}
+    <div class="blog">
+        <h2><a href="{% url 'main:detail' comment.blog.id %}">제목:{{comment.blog.title}}</a></h2>
+        <h4>작성자: {{comment.blog.writer}}</h4>
+        <h3>내용: {{comment.blog.body}}</h3>
+    </div>
+    <hr>
+    {% endfor %}
+</div>
+
+{% endblock %}

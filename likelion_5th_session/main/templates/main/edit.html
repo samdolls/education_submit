@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>글 수정하기</h1>
+    <form action="{% url 'main:update' blog.id %}" method="POST">
+        {%csrf_token%}
+        <p>제목 : <input type="text" name="title" value="{{blog.title}}"></p>
+        <p>작성자 : <input type="text" name="writer" value="{{blog.writer}}"></p>
+        <p>내용 : <textarea name="body" id="" cols="30" rows="10">{{blog.body}}</textarea></p>
+        <button type="submit">제출</button>
+    </form>
+</div>
+{% endblock %}
